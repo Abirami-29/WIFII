@@ -1,0 +1,21 @@
+from termcolor import colored
+
+print(colored(' **********************************************************************************************************','yellow'))
+print(colored(' WELCOME TO WIFI SPEED DETECTOR ','yellow'))
+print(colored(' **********************************************************************************************************','yellow'))
+import speedtest
+
+test=speedtest.Speedtest()
+print(colored('\n\t\tLoading Server List....','green'))
+
+test.get_servers()
+print(colored('\t\tChoosing Best Server....\n','green'))
+
+best=test.get_best_server()
+print((colored(f'\t\tfound:{best["host"]} located is {best["country"]}','green')))
+
+print(colored('\n\t\tPerforming download test....','green'))
+download_result=test.download()
+
+print(colored('\t\tPerforming upload test....\n\n','green'))
+upload_result=test.upload()
